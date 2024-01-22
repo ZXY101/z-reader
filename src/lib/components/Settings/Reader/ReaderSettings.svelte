@@ -18,7 +18,8 @@
     <ReaderToggles />
     <div>
       <Label>Swipe threshold</Label>
-      <Range on:change={onChange} min={20} max={90} disabled={!$settings.mobile} bind:value />
+      <Range on:change={onChange} min={20} max={90} disabled={!$settings.mobile} bind:value 
+      style={`background: linear-gradient(to right, #EF562F ${(value - 20) / (90 - 20) * 100}%, #374151 ${(value - 20) / (90 - 20) * 100}%);`} />
     </div>
   </div>
 </AccordionItem>
