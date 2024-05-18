@@ -5,6 +5,12 @@
 
   $: zoomModeValue = $settings.zoomDefault;
   $: fontSizeValue = $settings.fontSize;
+  $: readerValue = $settings.reader || 'classic';
+
+  let readers = [
+    { value: 'classic', name: 'Classic' },
+    { value: 'v2', name: 'V2' }
+  ];
 
   let zoomModes = [
     { value: 'zoomFitToScreen', name: 'Fit to screen' },
@@ -39,6 +45,11 @@
     updateSetting(setting, (event.target as HTMLInputElement).value);
   }
 </script>
+
+<div>
+  <Label>Reader:</Label>
+  <Select items={readers} value={readerValue} on:change={(e) => onSelectChange(e, 'reader')} />
+</div>
 
 <div>
   <Label>On page zoom:</Label>

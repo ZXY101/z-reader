@@ -1,6 +1,8 @@
 import { browser } from '$app/environment';
 import { derived, get, writable } from 'svelte/store';
 
+export type Readers = 'classic' | 'v2'
+
 export type FontSize =
   | 'auto'
   | '9'
@@ -41,6 +43,7 @@ export type VolumeDefaults = {
 }
 
 export type Settings = {
+  reader: Readers,
   textEditable: boolean;
   textBoxBorders: boolean;
   displayOCR: boolean;
@@ -67,6 +70,7 @@ export type AnkiSettingsKey = keyof AnkiConnectSettings;
 export type VolumeDefaultsKey = keyof VolumeDefaults;
 
 const defaultSettings: Settings = {
+  reader: 'classic',
   displayOCR: true,
   textEditable: false,
   textBoxBorders: false,

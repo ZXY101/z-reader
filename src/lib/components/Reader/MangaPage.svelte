@@ -35,10 +35,17 @@
 
 <div
   draggable="false"
-  style:width={`${page.img_width}px`}
-  style:height={`${page.img_height}px`}
+  style:width={`${window.innerWidth}px`}
+  style:height={`${(window.innerWidth * page.img_height) / page.img_width}px`}
   style:background-image={url}
   class="relative"
 >
   <TextBoxes {page} {src} />
 </div>
+
+<style>
+  div {
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+</style>

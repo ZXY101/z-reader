@@ -4,6 +4,7 @@
   import Timer from '$lib/components/Reader/Timer.svelte';
   import { initializeVolume, settings, startCount, volumeSettings, volumes } from '$lib/settings';
   import { onMount } from 'svelte';
+  import ReaderV2 from '$lib/components/ReaderV2/ReaderV2.svelte';
 
   const volumeId = $page.params.volume;
   let count: undefined | number = undefined;
@@ -26,5 +27,9 @@
   {#if $settings.showTimer}
     <Timer bind:count {volumeId} />
   {/if}
-  <Reader volumeSettings={$volumeSettings[volumeId]} />
+  {#if $settings.reader === 'classic'}
+    <Reader volumeSettings={$volumeSettings[volumeId]} />
+  {:else}
+    <ReaderV2 />
+  {/if}
 {/if}

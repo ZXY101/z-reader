@@ -9,15 +9,20 @@
 
   $: textBoxes = page.blocks
     .map((block) => {
-      const { img_height, img_width } = page;
+      const { img_height: imgh, img_width: imgw } = page;
+      const img_height = (window.innerWidth * imgh) / imgw;
+      const img_width = window.innerWidth;
       const { box, font_size, lines, vertical } = block;
 
-      let [_xmin, _ymin, _xmax, _ymax] = box;
+      const resizeFactor = window.innerWidth / imgw;
 
-      const xmin = clamp(_xmin, 0, img_width);
-      const ymin = clamp(_ymin, 0, img_height);
-      const xmax = clamp(_xmax, 0, img_width);
-      const ymax = clamp(_ymax, 0, img_height);
+      let [_xmin, _ymin, _xmax, _ymax] = box;
+      console.log(box);
+
+      const xmin = clamp(_xmin * resizeFactor, 0, img_width);
+      const ymin = clamp(_ymin * resizeFactor, 0, img_height);
+      const xmax = clamp(_xmax * resizeFactor, 0, img_width);
+      const ymax = clamp(_ymax * resizeFactor, 0, img_height);
 
       const width = xmax - xmin;
       const height = ymax - ymin;
