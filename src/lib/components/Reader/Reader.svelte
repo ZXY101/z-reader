@@ -7,7 +7,7 @@
     zoomDefault,
     zoomFitToScreen
   } from '$lib/panzoom';
-  import { progress, settings, updateProgress, type VolumeSettings } from '$lib/settings';
+  import { progress, settings, updateProgress, updateVolumeSetting, volumes, type VolumeSettings } from '$lib/settings';
   import { clamp, debounce, fireExstaticEvent } from '$lib/util';
   import { Input, Popover, Range, Spinner } from 'flowbite-svelte';
   import MangaPage from './MangaPage.svelte';
@@ -140,12 +140,22 @@
       case 'KeyF':
         toggleFullScreen();
         return;
+<<<<<<< HEAD
       case 'KeyW':
           $panzoomStore?.moveBy(0, 300 * $panzoomStore?.getTransform().scale, true);
           return;
       case 'KeyS':
           $panzoomStore?.moveBy(0, -300 * $panzoomStore?.getTransform().scale, true);
           return;
+=======
+      case 'KeyC':
+        const volumeId = $pageStore.params.volume;
+        updateVolumeSetting(volumeId, "hasCover", !volumeSettings.hasCover);
+        const pageClamped = Math.max($volumes[volumeId].progress - 1, 1);
+        updateProgress(volumeId, pageClamped);
+        zoomDefault();
+        return;
+>>>>>>> 0734cb8 (feat: add cover keyboard shortcut)
       default:
         break;
     }
