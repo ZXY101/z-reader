@@ -137,6 +137,15 @@
           changePage(pages.length, true);
         }
         return;
+      case 'KeyA':
+        left(event, true);
+        return;
+      case 'KeyD':
+        right(event, true);
+        return;
+      case 'KeyR':
+        zoomDefault();
+        return;
       case 'KeyF':
         toggleFullScreen();
         return;
