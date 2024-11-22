@@ -18,7 +18,8 @@ export function initPanzoom(node: HTMLElement) {
     enableTextSelection: true,
     beforeMouseDown: (e) => {
       const nodeName = (e.target as HTMLElement).nodeName;
-      return nodeName === 'P';
+      const mousePanDisabled = get(settings).disableMousePan; //Add this to initPanzoom
+      return nodeName === 'P' || mousePanDisabled; //Add this to initPanzoom
     },
     beforeWheel: (e) => {
       if (!e.ctrlKey) {
