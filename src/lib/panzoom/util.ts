@@ -12,8 +12,8 @@ export function initPanzoom(node: HTMLElement) {
   container = node;
   pz = panzoom(node, {
     bounds: false,
-    maxZoom: 10,
-    minZoom: 0.1,
+    maxZoom: Math.pow(1.25, 10), //Min and Max are both set to an Exponent of Zoom Levels
+    minZoom: Math.pow(0.8, 10),
     zoomDoubleClickSpeed: 1,
     enableTextSelection: true,
     beforeMouseDown: (e) => {
