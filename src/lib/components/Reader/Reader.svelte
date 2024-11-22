@@ -140,6 +140,12 @@
       case 'KeyF':
         toggleFullScreen();
         return;
+      case 'KeyW':
+          $panzoomStore?.moveBy(0, 300 * $panzoomStore?.getTransform().scale, true);
+          return;
+      case 'KeyS':
+          $panzoomStore?.moveBy(0, -300 * $panzoomStore?.getTransform().scale, true);
+          return;
       default:
         break;
     }
