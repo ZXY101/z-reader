@@ -147,6 +147,21 @@
           updateProgress(volumeId, pageClamped);
           zoomDefault();
           return;
+      case 'KeyW':
+          $panzoomStore?.moveBy(0, 300 * $panzoomStore?.getTransform().scale, true);
+          return;
+      case 'KeyS':
+          $panzoomStore?.moveBy(0, -300 * $panzoomStore?.getTransform().scale, true);
+          return;
+      case 'KeyA':
+          left(event, true);
+          return;
+      case 'KeyD':
+          right(event, true);
+          return;
+      case 'KeyR':
+          zoomDefault();
+          return;
       default:
         break;
     }
