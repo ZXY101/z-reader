@@ -45,6 +45,7 @@
     "@zip.js/zip.js": "^2.7.20",
     "dexie": "^4.0.1-alpha.25",
     "panzoom": "^9.4.3",
+    "patch-package": "8.0.0",
     "svelte-easy-crop": "^2.0.1"
   }
 }
