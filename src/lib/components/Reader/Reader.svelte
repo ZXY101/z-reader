@@ -111,8 +111,17 @@
   }
 
   function handleShortcuts(event: KeyboardEvent & { currentTarget: EventTarget & Window }) {
-    const action = event.code || event.key;
+    if (event.target && event.target instanceof HTMLElement) {
+      const selection = window.getSelection();
+      const isTyping = event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA' || event.target.isContentEditable;
+      const isSelecting = selection && selection.toString().length > 0;
 
+      if (isTyping || isSelecting) {
+        return;
+      }
+    }
+    const action = event.code || event.key;
+    
     switch (action) {
       case 'ArrowLeft':
         left(event, true);
